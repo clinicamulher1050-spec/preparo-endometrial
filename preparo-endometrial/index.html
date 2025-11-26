@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Preparo Endometrial - Planejador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1976d2" />
+</head>
+<body>
+  <header>
+    <h1>Preparo Endometrial - Planejador</h1>
+    <p>Planejamento para TEC (LH, Artificial, Choriomon)</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Dados da paciente</h2>
+      <form id="planner-form">
+        <div class="field-group">
+          <label>
+            Nome da paciente
+            <input type="text" id="paciente" required />
+          </label>
+          <label>
+            Médico
+            <input type="text" id="medico" required />
+          </label>
+        </div>
+
+        <div class="field-group">
+          <label>
+            Tipo de preparo
+            <select id="preparo">
+              <option value="1">1 - Fita de LH (ciclo natural)</option>
+              <option value="2" selected>2 - Artificial</option>
+              <option value="3">3 - Choriomon</option>
+            </select>
+          </label>
+
+          <label>
+            Estradiol
+            <select id="estradiol">
+              <option value="0">0 - Não</option>
+              <option value="1">1 - Oestrogel</option>
+              <option value="2">2 - Val. Estradiol</option>
+              <option value="3" selected>3 - O + P</option>
+            </select>
+          </label>
+
+          <label>
+            Progesterona
+            <select id="progesterona">
+              <option value="1">1 - Duphaston</option>
+              <option value="2">2 - Utrogestan</option>
+              <option value="3" selected>3 - D + U</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="field-group">
+          <label>
+            Início do preparo
+            <input type="date" id="inicio-preparo" required />
+          </label>
+
+          <label>
+            DUM
+            <input type="date" id="dum" required />
+          </label>
+
+          <label>
+            Duração média do ciclo (dias)
+            <input type="number" id="duracao-ciclo" value="28" min="20" max="40" required />
+          </label>
+
+          <label>
+            Dias do embrião na TEC
+            <input type="number" id="dias-embriao" value="5" min="2" max="6" required />
+          </label>
+        </div>
+
+        <div class="field-group">
+          <label>
+            Realizar ultrassom?
+            <select id="realizar-us">
+              <option value="nao">Não</option>
+              <option value="sim" selected>Sim</option>
+            </select>
+          </label>
+
+          <label>
+            Dosar progesterona?
+            <select id="dosar-prog">
+              <option value="nao">Não</option>
+              <option value="sim" selected>Sim</option>
+            </select>
+          </label>
+
+          <label>
+            Nº de embriões para TEC
+            <input type="number" id="num-embrioes" min="1" placeholder="Ex: 1, 2, 3..." />
+          </label>
+        </div>
+
+        <hr />
+
+        <h3>Dados específicos (preenchidos quando disponíveis)</h3>
+        <div class="field-group">
+          <label>
+            "Carinha feliz" (teste LH positivo)
+            <input type="date" id="carinha-feliz" />
+          </label>
+
+          <label>
+            Folículo ≥ 16 mm (para Choriomon)
+            <input type="date" id="foliculo-16" />
+          </label>
+        </div>
+
+        <button type="submit" class="primary-btn">Gerar planejamento</button>
+      </form>
+    </section>
+
+    <section class="card" id="resultados-section" style="display:none">
+      <h2>Resumo do planejamento</h2>
+      <div id="resultados"></div>
+    </section>
+
+    <section class="card" id="documentos-section" style="display:none">
+      <h2>Textos para receituário / solicitações</h2>
+      <p>Você pode copiar e colar esses textos para o seu receituário eletrônico ou impressos.</p>
+
+      <details open>
+        <summary>Receituário - Fita de LH (LH1 / LH2)</summary>
+        <textarea id="texto-lh" readonly></textarea>
+      </details>
+
+      <details>
+        <summary>Receituário - Preparo Artificial (Art1 / Art2)</summary>
+        <textarea id="texto-artificial" readonly></textarea>
+      </details>
+
+      <details>
+        <summary>Receituário - Choriomon (Ch1 / Ch2)</summary>
+        <textarea id="texto-choriomon" readonly></textarea>
+      </details>
+
+      <details>
+        <summary>Solicitação de exames hormonais (DH)</summary>
+        <textarea id="texto-dh" readonly></textarea>
+      </details>
+
+      <details>
+        <summary>Solicitação de ultrassom (US)</summary>
+        <textarea id="texto-us" readonly></textarea>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <small>Ferramenta de apoio ao planejamento de preparo endometrial. Ajuste sempre de acordo com o protocolo clínico.</small>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Registro básico do service worker (PWA)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').catch(console.error    }
+  </script>
+</body>
+</html>

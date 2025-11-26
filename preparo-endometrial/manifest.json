@@ -1,0 +1,22 @@
+{
+  "name": "Preparo Endometrial",
+  "short_name": "Preparo TEC",
+  "description": "Planejador de preparo endometrial para TEC",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1976d2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192.png?text=TEC",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512.png?text=TEC",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
